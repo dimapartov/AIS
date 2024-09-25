@@ -1,0 +1,1 @@
+# TODO: algorythm for data frame shuffle and replacing all text with numbers
