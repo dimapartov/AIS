@@ -25,7 +25,7 @@ pyplot.title('Зависимость функционала ошибки J от 
 pyplot.xlabel('theta1')
 pyplot.ylabel('J')
 pyplot.yticks(numpy.arange(min(j_noisy_values), max(j_noisy_values), 10000))
-pyplot.xticks(numpy.arange(-6, 6, 0.5))  # Устанавливаем шаг 0.5 на оси X
+pyplot.xticks(numpy.arange(-5.5, 6, 0.5))  # Устанавливаем шаг 0.5 на оси X
 pyplot.grid()
 pyplot.legend()
 pyplot.tight_layout()  # Автоматическая подгонка

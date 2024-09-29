@@ -16,13 +16,13 @@ for theta1 in theta1_values:
     j_values.append(j)
 
 # 3. Построение графика зависимости J(theta1) от theta1
-pyplot.figure(figsize=(7, 4))
+pyplot.figure(figsize=(10, 5))
 pyplot.plot(theta1_values, j_values, label = 'J(theta1)')
 pyplot.title('Зависимость функционала ошибки J от theta1')
 pyplot.xlabel('theta1')
 pyplot.ylabel('J')
 pyplot.yticks(numpy.arange(min(j_values), max(j_values), 10000))
-pyplot.xticks(numpy.arange(-6, 6, 0.5))  # Устанавливаем шаг 0.5 на оси X
+pyplot.xticks(numpy.arange(-5.5, 6, 0.5))  # Устанавливаем шаг 0.5 на оси X
 pyplot.grid()
 pyplot.legend()
 pyplot.tight_layout()  # Автоматическая подгонка
