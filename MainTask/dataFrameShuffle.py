@@ -26,8 +26,8 @@ def custom_shuffle(data):
     shuffled_data = [data[i] for i in indices]
     return shuffled_data
 
-input_file = 'data/DataFrameNormalized.csv'
-output_file = 'data/DataFrameShuffled.csv'
+input_file = '../data/DataFrameNormalized.csv'
+output_file = '../data/DataFrameShuffled.csv'
 
 header, data = read_csv(input_file)
 
