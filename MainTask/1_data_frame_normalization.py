@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-csv_file_path = '../data/DataFrameOriginal.csv'
+csv_file_path = '../data/data_frame_original.csv'
 dataFrame = pd.read_csv(csv_file_path)
 
 print("Unique Categories:", dataFrame['Category'].unique())
@@ -17,4 +17,4 @@ dataFrame['Tyres'] = dataFrame['Tyres'].map(tyres_mapping)
 status_mapping = {'Running': 1, 'Retired': 2}
 dataFrame['Status'] = dataFrame['Status'].map(status_mapping)
 
-dataFrame.to_csv('../data/DataFrameNormalized.csv', index=False)
+dataFrame.to_csv('../data/data_frame_normalized.csv', index=False)

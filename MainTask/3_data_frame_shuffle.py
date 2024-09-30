@@ -19,15 +19,17 @@ def custom_shuffle(data):
     n = len(data)
     indices = list(range(n))
 
-    for i in range(n):
-        j = random.randint(0, n - 1)
-        indices[i], indices[j] = indices[j], indices[i]
+    for a in range(1000):
+        for i in range(n):
+            j = random.randint(0, n - 1)
+            indices[i], indices[j] = indices[j], indices[i]
 
     shuffled_data = [data[i] for i in indices]
     return shuffled_data
 
-input_file = '../data/DataFrameNormalized.csv'
-output_file = '../data/DataFrameShuffled.csv'
+
+input_file = '../data/data_frame_normalized_trimmed.csv'
+output_file = '../data/data_frame_normalized_trimmed_shuffled.csv'
 
 header, data = read_csv(input_file)
 
