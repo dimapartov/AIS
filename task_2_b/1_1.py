@@ -3,11 +3,11 @@ import matplotlib.pyplot as plt
 
 # Данные
 x = np.arange(1, 21)
-y = x  # Так как y_i = x_i
+y = x  # y_i = x_i
 
 # Значения theta1
-theta1_values = [0.8, 0.9, 1, 1.10, 1.20]
-
+# theta1_values = [0.8, 0.9, 1, 1.10, 1.20]
+theta1_values = [1, 0.8, 0.9, 1.10]
 # Построение графиков для разных значений theta1
 plt.figure(figsize=(10, 6))
 for theta1 in theta1_values:

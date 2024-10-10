@@ -6,7 +6,7 @@ x = np.arange(1, 21)
 y = x + np.random.uniform(-2, 2, size=x.shape)  # Зашумленные данные
 
 # Значения theta1
-theta1_values = [0.8, 0.9, 1, 1.10, 1.20]
+theta1_values = [0.95]
 
 # Построение графиков для разных значений theta1
 plt.figure(figsize=(10, 6))

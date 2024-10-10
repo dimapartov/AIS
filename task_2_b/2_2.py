@@ -33,4 +33,4 @@ pyplot.show()
 
 # 4. Нахождение theta1min для зашумленных данных
 theta1_min_noisy = theta1_values[numpy.argmin(j_noisy_values)]
-print(f'theta1min, соответствующее минимуму функционала, с зашумленными данными, равно {theta1_min_noisy}')
+# print(f'theta1min, соответствующее минимуму функционала, с зашумленными данными, равно {theta1_min_noisy}')

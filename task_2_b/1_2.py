@@ -30,4 +30,4 @@ pyplot.show()
 
 # 4. Нахождение theta1min
 theta1_min = theta1_values[numpy.argmin(j_values)]
-print(f'theta1min, соответствующее минимуму функционала, равно {theta1_min}')
+# print(f'theta1min, соответствующее минимуму функционала, равно {theta1_min}')
