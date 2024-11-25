@@ -23,26 +23,24 @@ theta = np.zeros(2)
 iterations = 1500
 alpha = 0.01  # скорость обучения
 
-# Визуализация данных
-plotData.plot(X[:, 1], Y)
-
 # Вычисление стоимости (векторное)
 costByVector = computeCost.computeCostByVector(X, Y, theta)
-print(f'Initial cost by vector: {costByVector}')
+print(f'Значение функции стоимости(векторный способ): {costByVector}')
 
 # Вычисление стоимости (поэлементное)
 costByElements = computeCost.computeCostByElements(X, Y, theta)
-print(f'Initial cost by elements: {costByElements}')
+print(f'Значение функции стоимости(поэлементный способ): {costByElements}')
 
 # Градиентный спуск (векторный)
-# thetaByVector, cost_history = gradientDescent.gradientDescentByVector(X, Y, theta, alpha, iterations)
 thetaByVector = gradientDescent.gradientDescentByVector(X, Y, theta, alpha, iterations)
-print(f'Optimized theta by vector: {thetaByVector}')
+print(f'Градиентный спуск(векторный способ): {thetaByVector}')
 
 # Градиентный спуск (поэлементный)
-# thetaByElements, cost_history = gradientDescent.gradientDescentByElements(X, Y, theta, alpha, iterations)
 thetaByElements = gradientDescent.gradientDescentByElements(X, Y, theta, alpha, iterations)
-print(f'Optimized theta by elements: {thetaByElements}')
+print(f'Градиентный спуск(поэлементный способ): {thetaByElements}')
+
+# Визуализация данных
+plotData.plot(X[:, 1], Y, thetaByVector)
 
 cars = float(input("Введите количество автомобилей: "))
 profitByVector = predict_profit(cars, thetaByVector)
