@@ -3,25 +3,26 @@ import numpy as np
 import computeCost
 import gradientDescent
 import plotData
-from warmUpExercise import warmUpExercise
-from work import predict_profit
+import warmUpExercise
+import work
 
 # Разминка
-warmUpExercise(3)
+matrixSize = int(input("Введите размерность: "))
+warmUpExercise.warm_up_exercise(matrixSize)
 
 # Загрузка данных
 data = np.loadtxt('train_data.txt', delimiter=',')
 X = data[:, 0]
 Y = data[:, 1]
-m = len(Y)  # количество примеров
+# Переменная m используется для нормализации функции стоимости (чтобы учитывать количество данных)
+m = len(Y)
 
-# Добавляем столбец единиц для X
+# Добавление столбца единиц к массиву признаков. Для учета свободного члена в модели линейной регрессии
 X = np.column_stack((np.ones(m), X))
 
-# Инициализация параметров
 theta = np.zeros(2)
 iterations = 1500
-alpha = 0.01  # скорость обучения
+alpha = 0.01
 
 # Вычисление стоимости (векторное)
 costByVector = computeCost.computeCostByVector(X, Y, theta)
@@ -42,8 +43,8 @@ print(f'Градиентный спуск(поэлементный способ)
 # Визуализация данных
 plotData.plot(X[:, 1], Y, thetaByVector)
 
-cars = float(input("Введите количество автомобилей: "))
-profitByVector = predict_profit(cars, thetaByVector)
-profitByElements = predict_profit(cars, thetaByElements)
+cars = int(input("Введите количество автомобилей: "))
+profitByVector = work.predict_profit(cars, thetaByVector)
+profitByElements = work.predict_profit(cars, thetaByElements)
 print(f"Прогнозируемая прибыль СТО (векторный способ): {profitByVector}")
 print(f"Прогнозируемая прибыль СТО (поэлементный способ): {profitByElements}")

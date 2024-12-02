@@ -1,9 +1,3 @@
-import numpy as np
-
-from computeCost import computeCostByElements
-from computeCost import computeCostByVector
-
-
 def gradientDescentByVector(X, Y, theta, alpha, iterations):
     m = len(Y)
 
@@ -16,20 +10,29 @@ def gradientDescentByVector(X, Y, theta, alpha, iterations):
 
 
 def gradientDescentByElements(X, Y, theta, alpha, iterations):
-    m = len(Y)
+    m = len(Y)  # Число примеров
+    n = len(theta)  # Число параметров
 
     for _ in range(iterations):
-        predictions = np.zeros(m)
-        errors = np.zeros(m)
+        # Инициализируем массив градиентов для обновления theta
+        gradients = [0] * n
 
-        for i in range(m):
-            predictions[i] = X[i].dot(theta)
-            errors[i] = predictions[i] - Y[i]
+        # Рассчитаем градиенты для всех параметров
+        for i in range(m):  # Проходим по каждому примеру
+            # Вычисляем линейную комбинацию вручную (prediction)
+            prediction = 0
+            for j in range(n):
+                prediction += theta[j] * X[i][j]
 
-        for j in range(len(theta)):
-            gradient = 0
-            for i in range(m):
-                gradient += errors[i] * X[i][j]
-            theta[j] -= (alpha / m) * gradient
+            # Ошибка предсказания
+            error = prediction - Y[i]
+
+            # Обновляем градиенты
+            for j in range(n):
+                gradients[j] += error * X[i][j]
+
+        # Обновляем параметры theta на основе вычисленных градиентов
+        for j in range(n):
+            theta[j] -= (alpha / m) * gradients[j]
 
     return theta
