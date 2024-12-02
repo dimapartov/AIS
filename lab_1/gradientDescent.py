@@ -4,7 +4,7 @@ def gradientDescentByVector(X, Y, theta, alpha, iterations):
     for _ in range(iterations):
         predictions = X.dot(theta)
         errors = predictions - Y
-        theta -= (alpha / m) * (X.T.dot(errors))
+        theta -= (alpha / m) * (X.T.dot(errors)) #theta=theta-a/m * SUM(h(x^i)-y^i)X^ij
 
     return theta
 
