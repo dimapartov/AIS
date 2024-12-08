@@ -3,14 +3,14 @@ import random
 
 
 def read_csv(file_path):
-    with open(file_path, mode='r', newline='', encoding='utf-8') as file:
+    with open(file_path, mode='r', newline='', encoding='ISO-8859-1') as file:
         reader = csv.reader(file)
         header = next(reader)
         data = [row for row in reader]
     return header, data
 
 def write_csv(file_path, header, data):
-    with open(file_path, mode='w', newline='', encoding='utf-8') as file:
+    with open(file_path, mode='w', newline='', encoding='ISO-8859-1') as file:
         writer = csv.writer(file)
         writer.writerow(header)
         writer.writerows(data)
