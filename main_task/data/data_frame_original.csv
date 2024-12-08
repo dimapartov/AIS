@@ -60,7 +60,7 @@ S.No,Hour,Car No.,Team,Drivers,Car,Category,Tyres,Laps,Total Time,Pit Stops,Best
 59,1,16,Proton Competition,R. HARDWICK / Z. ROBICHON / J. HEYLEN,Porsche 911 RSR - 19,LMGTE Am,M,11,01:01:00,1,10,03:58.7,205.5,Running
 60,1,708,Glickenhaus Racing,R. DUMAS / R. BRISCOE / O. PLA,Glickenhaus 007,HYPERCAR,M,11,01:01:30,1,9,03:30.4,233.1,Running
 61,1,32,Inter Europol Competition,M. KVAMME / J. MAGNUSSEN / A. FJORDBACH,Oreca 07 - Gibson,LMP2,G,11,01:03:42,0,9,03:49.2,214,Running
-62,1,311,Action Express Racing,L. DERANI / A. SIMS / J. AITKEN,Cadillac V-Series.R,HYPERCAR,M,1,00:06:04,1,,,,Running
+62,1,311,Action Express Racing,L. DERANI / A. SIMS / J. AITKEN,Cadillac V-Series.R,HYPERCAR,M,1,00:06:04,1,11,03:35.5,224.2,Running
 63,2,2,Cadillac Racing,E. BAMBER / A. LYNN / R. WESTBROOK,Cadillac V-Series.R,HYPERCAR,M,26,02:01:05,1,10,03:30.2,233.4,Running
 64,2,5,Porsche Penske Motorsport,D. CAMERON / M. CHRISTENSEN / F. MAKOWIECKI,Porsche 963,HYPERCAR,M,26,02:01:10,1,9,03:30.1,233.5,Running
 65,2,75,Porsche Penske Motorsport,F. NASR / M. JAMINET / N. TANDY,Porsche 963,HYPERCAR,M,26,02:01:13,1,12,03:29.9,233.7,Running
@@ -1447,7 +1447,7 @@ S.No,Hour,Car No.,Team,Drivers,Car,Category,Tyres,Laps,Total Time,Pit Stops,Best
 1446,24,22,United Autosports,P. HANSON / F. ALBUQUERQUE / F. LUBIN,Oreca 07 - Gibson,LMP2,G,321,00:03:00,34,265,03:36.7,226.4,Running
 1447,24,6,Porsche Penske Motorsport,K. ESTRE / A. LOTTERER / L. VANTHOOR,Porsche 963,HYPERCAR,M,320,00:00:46,28,307,03:28.3,235.5,Running
 1448,24,37,COOL Racing,N. LAPIERRE / A. COIGNY / M. JAKOBSEN,Oreca 07 - Gibson,LMP2,G,317,00:02:44,35,223,03:37.1,226,Running
-1449,24,28,JOTA,D. HEINEMEIER-HANSSON / O. RASMUSSEN / P. FITTIPALDIOreca 07 - Gibson,,LMP2,G,316,00:02:11,29,238,03:37.3,225.7,Running
+1449,24,28,JOTA,D. HEINEMEIER-HANSSON / O. RASMUSSEN / P. FITTIPALDIOreca 07 - Gibson,Oreca 07 - Gibson,LMP2,G,316,00:02:11,29,238,03:37.3,225.7,Running
 1450,24,65,Panis Racing,M. MALDONADO / T. VAN DER HELM / J. VAN UITERT,Oreca 07 - Gibson,LMP2,G,316,00:02:57,30,286,03:37.5,225.5,Running
 1451,24,33,Corvette Racing,N. CATSBURG / B. KEATING / N. VARRONE,Chevrolet Corvette C8.R,LMGTE Am,M,313,00:02:47,24,261,03:50.4,212.9,Running
 1452,24,94,Peugeot TotalEnergies,L. DUVAL / G. MENEZES / N. MÜLLER,Peugeot 9X8,HYPERCAR,M,312,00:00:25,30,275,03:28.4,235.3,Running
