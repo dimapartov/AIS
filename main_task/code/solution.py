@@ -1,62 +1,96 @@
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
-
-# Загрузка обработанного датасета
-data = pd.read_csv('../data/data_frame_normalized_trimmed_shuffled.csv')
-
-# Разделение на признаки и целевую переменную
-X = data.iloc[:, :-1]  # Все колонки, кроме последней
-y = data.iloc[:, -1]  # Последняя колонка
-
-# Разделение данных на обучающую и тестовую выборки
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# Нормализация данных
-scaler = StandardScaler()
-X_train = scaler.fit_transform(X_train)
-X_test = scaler.transform(X_test)
-
-# Обучение модели
-model = RandomForestClassifier(n_estimators=100, random_state=42)
-model.fit(X_train, y_train)
-
-# Оценка эффективности модели
-y_pred = model.predict(X_test)
-accuracy = accuracy_score(y_test, y_pred)
-print(f'Accuracy: {accuracy:.2f}')
-print('Classification Report:')
-print(classification_report(y_test, y_pred))
-print('Confusion Matrix:')
-print(confusion_matrix(y_test, y_pred))
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 
 
-# Функция для предсказания статуса
-def predict_status(input_features):
-    # Преобразование входных данных в DataFrame
-    input_df = pd.DataFrame([input_features], columns=data.columns[:-1])
+def load_and_preprocess_data(filepath):
+    """Load the dataset and split it into features and target."""
+    # Load the dataset
+    data = pd.read_csv(filepath)
 
-    # Нормализация введенных данных
+    # Split features and target
+    X = data.iloc[:, :-1]  # All columns except the last
+    y = data.iloc[:, -1]  # The last column (target)
+
+    return X, y
+
+
+def split_and_normalize_data(X, y, test_size=0.2, random_state=42):
+    """Split the data into train and test sets and normalize it."""
+    # Split the data
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=test_size, random_state=random_state)
+
+    # Normalize the data
+    scaler = StandardScaler()
+    X_train_scaled = scaler.fit_transform(X_train)
+    X_test_scaled = scaler.transform(X_test)
+
+    return X_train_scaled, X_test_scaled, y_train, y_test, scaler
+
+
+def train_model(X_train, y_train):
+    """Train a RandomForestClassifier."""
+    model = RandomForestClassifier(n_estimators=100, random_state=42)
+    model.fit(X_train, y_train)
+    return model
+
+
+def evaluate_model(model, X_test, y_test):
+    """Evaluate the model and print metrics."""
+    y_pred = model.predict(X_test)
+    accuracy = accuracy_score(y_test, y_pred)
+    print(f'Accuracy: {accuracy:.2f}')
+    print('Classification Report:')
+    print(classification_report(y_test, y_pred))
+    print('Confusion Matrix:')
+    print(confusion_matrix(y_test, y_pred))
+
+
+def predict_status(model, scaler, input_features, feature_names):
+    """Predict the status given input features."""
+    # Create a DataFrame for input features
+    input_df = pd.DataFrame([input_features], columns=feature_names)
+
+    # Normalize input features
     input_scaled = scaler.transform(input_df)
 
-    # Получение прогноза
+    # Make prediction
     prediction = model.predict(input_scaled)
-    return prediction[0]  # Возвращаем только одно значение прогноза
+    return prediction[0]
 
 
-# Пример использования функции для получения прогноза
 if __name__ == "__main__":
-    print("\nВведите значения для признаков (все колонки, кроме последней) через запятую:")
-    user_input = input("Формат: 'value1,value2,value3,...': ")
+    # Filepath to the dataset
+    filepath = '../data/data_frame_normalized_trimmed_shuffled.csv'
 
-    # Преобразование пользовательского ввода в список чисел
-    features = list(map(float, user_input.split(',')))
+    # Load and preprocess the data
+    X, y = load_and_preprocess_data(filepath)
 
-    # Проверка, соответствует ли количество введенных значений количеству признаков
-    if len(features) != len(data.columns) - 1:
-        print(f"Ошибка: должно быть {len(data.columns) - 1} значений.")
-    else:
-        result = predict_status(features)
-        print(f'Предсказанный статус: {result}')
+    # Split and normalize the data
+    X_train, X_test, y_train, y_test, scaler = split_and_normalize_data(X, y)
+
+    # Train the model
+    model = train_model(X_train, y_train)
+
+    # Evaluate the model
+    evaluate_model(model, X_test, y_test)
+
+    # Interactive prediction
+    print("\nEnter feature values (comma-separated, corresponding to the first 6 columns):")
+    user_input = input("Format: 'value1,value2,value3,...': ")
+
+    try:
+        # Convert input into a list of floats
+        input_features = list(map(float, user_input.split(',')))
+
+        # Check if the number of input features matches
+        if len(input_features) != len(X.columns):
+            print(f"Error: Expected {len(X.columns)} features, but got {len(input_features)}.")
+        else:
+            # Predict the status
+            result = predict_status(model, scaler, input_features, X.columns)
+            print(f'Predicted Status: {result}')
+    except ValueError as e:
+        print(f"Error: {e}")
