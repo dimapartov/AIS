@@ -1,5 +1,4 @@
 import numpy as np
-
 import computeCost
 import gradientDescent
 import plotData
@@ -7,8 +6,8 @@ import warmUpExercise
 import work
 
 # Разминка
-matrixSize = int(input("Введите размерность: "))
-warmUpExercise.warm_up_exercise(matrixSize)
+# matrixSize = int(input("Введите размерность: "))
+# warmUpExercise.warm_up_exercise(matrixSize)
 
 # Загрузка данных
 data = np.loadtxt('train_data.txt', delimiter=',')
@@ -40,11 +39,15 @@ print(f'Градиентный спуск(векторный способ): {the
 thetaByElements = gradientDescent.gradientDescentByElements(X, Y, theta, alpha, iterations)
 print(f'Градиентный спуск(поэлементный способ): {thetaByElements}')
 
-# Визуализация данных
-plotData.plot(X[:, 1], Y, thetaByVector)
-
+# Количество автомобилей, введенное пользователем
 cars = int(input("Введите количество автомобилей: "))
+
+# Вычисление прибыли на основе моделей
 profitByVector = work.predict_profit(cars, thetaByVector)
 profitByElements = work.predict_profit(cars, thetaByElements)
+
 print(f"Прогнозируемая прибыль СТО (векторный способ): {profitByVector}")
 print(f"Прогнозируемая прибыль СТО (поэлементный способ): {profitByElements}")
+
+# Визуализация данных и добавление точки с предсказанным результатом
+plotData.plot(X[:, 1], Y, thetaByVector, cars, profitByVector)
