@@ -31,7 +31,7 @@ def gradientDescentMulti(X, y, theta, alpha, num_iters):
     m = len(y)  # Количество примеров
     J_history = np.zeros(num_iters)  # История значений функции стоимости
     for i in range(num_iters):
-        # Обновление параметров θ по формуле: θ = θ - (α / m) * X.T * (Xθ - y)
+        # Обновление параметров θ по формуле: θ = θ - (α / m) * X^T * (Xθ - y)
         theta = theta - (alpha / m) * (X.T @ (X @ theta - y))
         # Сохранение значения функции стоимости для текущей итерации
         J_history[i] = computeCostMulti(X, y, theta)
@@ -57,13 +57,13 @@ X_norm = np.hstack((np.ones((m, 1)), X_norm))
 
 # Обучение модели с использованием градиентного спуска
 alpha = 0.05  # Скорость обучения
-num_iters = 100  # Количество итераций
+iterations = 100  # Количество итераций
 theta = np.zeros(X_norm.shape[1])  # Инициализация параметров θ нулями
-theta_gd, J_history = gradientDescentMulti(X_norm, y, theta, alpha, num_iters)
+theta_gd, J_history = gradientDescentMulti(X_norm, y, theta, alpha, iterations)
 
 # Сохранение графика функции стоимости
 plt.figure()
-plt.plot(range(1, num_iters + 1), J_history, '-b', linewidth=2)
+plt.plot(range(1, iterations + 1), J_history, '-b', linewidth=2)
 plt.xlabel('Итерации')
 plt.ylabel('Стоимость J')
 plt.title('Сходимость градиентного спуска')
