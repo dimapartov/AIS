@@ -56,7 +56,7 @@ X_norm, mu, sigma = featureNormalize(X)
 X_norm = np.hstack((np.ones((m, 1)), X_norm))
 
 # Обучение модели с использованием градиентного спуска
-alpha = 0.1  # Скорость обучения
+alpha = 0.05  # Скорость обучения
 num_iters = 100  # Количество итераций
 theta = np.zeros(X_norm.shape[1])  # Инициализация параметров θ нулями
 theta_gd, J_history = gradientDescentMulti(X_norm, y, theta, alpha, num_iters)
