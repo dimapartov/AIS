@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Загрузка данных из файла
-data = pd.read_csv('ex1data2.txt', header=None)
+data = pd.read_csv('data.txt', header=None)
 data.columns = ['Engine_Speed', 'Num_Gears', 'Price']
 
 # Нормировка 1: делим на максимальное значение
