@@ -14,6 +14,7 @@ import numpy as np
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
+
 # Заданные точки
 points = [0, 3, -3, 8, -8, 15, -15]
 
@@ -28,10 +29,11 @@ x_vals = np.linspace(-20, 20, 400)
 y_vals = sigmoid(x_vals)
 
 plt.figure(figsize=(8, 6))
-plt.plot(x_vals, y_vals, label='Сигмоида', color='blue')
-plt.scatter(points, [sigmoid(x) for x in points], color='red', zorder=5, label='Заданные точки')
+plt.plot(x_vals, y_vals, label='Сигмоида', color='red')
+plt.scatter(points, [sigmoid(x) for x in points], color='blue', zorder=5, label='Заданные точки')
 for point in points:
-    plt.annotate(f'y({point})={sigmoid(point):.4f}', (point, sigmoid(point)), textcoords="offset points", xytext=(0, 10), ha='center', fontsize=8)
+    plt.annotate(f'y({point})={sigmoid(point):.4f}', (point, sigmoid(point)), textcoords="offset points",
+                 xytext=(0, 10), ha='center', fontsize=8)
 plt.title('График функции сигмоида')
 plt.xlabel('x')
 plt.ylabel('y(x)')
@@ -39,7 +41,6 @@ plt.grid(True)
 plt.legend()
 plt.tight_layout()
 plt.savefig('1_sigmoid_plot.png')
-
 
 # 2. Построение трёх графиков гиперболических функций на одной картинке с использованием plt.subplot
 
@@ -96,6 +97,7 @@ def tanh_derivative_np(x):
     t = np.tanh(x)
     return 1 - t ** 2
 
+
 # Вычисление производных для заданных точек (опционально)
 # print("\nВычисление производных функций в заданных точках:")
 # for x in points:
@@ -112,8 +114,8 @@ tanh_der_vals = tanh_derivative_np(x_der)
 
 # Создание и сохранение графика производных
 plt.figure(figsize=(10, 6))
-plt.plot(x_der, sig_der_vals, label="y'(сигмоида)", color='red', linewidth=2)
-plt.plot(x_der, tanh_der_vals, label="y'(tanh(x))", color='blue', linewidth=2)
+plt.plot(x_der, sig_der_vals, label="y'(сигмоида)", color='green', linewidth=2)
+plt.plot(x_der, tanh_der_vals, label="y'(tanh(x))", color='yellow', linewidth=2)
 plt.title('Графики производных функций сигмоида и tanh(x)')
 plt.xlabel('x')
 plt.ylabel('Значение производной')
