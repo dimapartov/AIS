@@ -1,5 +1,6 @@
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
+
 
 def manual_decision_boundary_plot_no_bridge():
     """
@@ -9,8 +10,8 @@ def manual_decision_boundary_plot_no_bridge():
     """
 
     # -- 1) ПАРАМЕТРЫ --
-    x_min, x_max = -12, 12   # диапазон осей
-    n_points = 300          # сетка для раскраски
+    x_min, x_max = -12, 12  # диапазон осей
+    n_points = 300  # сетка для раскраски
 
     # -- 2) Готовим сетку (x1, x2) для раскраски классов --
     x1_grid = np.linspace(x_min, x_max, n_points)
@@ -18,7 +19,7 @@ def manual_decision_boundary_plot_no_bridge():
     X1, X2 = np.meshgrid(x1_grid, x2_grid)
 
     # -- 3) Считаем z на этой сетке --
-    Z = 1 + 2*X2 + X1*X2 + X1**2
+    Z = 1 + 2 * X2 + X1 * X2 + X1 ** 2
 
     # Класс 0, если z < 0; класс 1, если z >= 0
     classes = np.where(Z >= 0, 1, 0)
@@ -37,7 +38,7 @@ def manual_decision_boundary_plot_no_bridge():
 
     def boundary_x2(x1):
         """Формула x2 = -(x1^2 + 1)/(x1 + 2)."""
-        return -(x1**2 + 1)/(x1 + 2)
+        return -(x1 ** 2 + 1) / (x1 + 2)
 
     # ЛЕВАЯ ВЕТВЬ: x1 < -2
     x1_vals_left = np.linspace(x_min, -2, 600, endpoint=False)  # не включая -2
@@ -77,9 +78,9 @@ def manual_decision_boundary_plot_no_bridge():
     plt.title("Разделяющая кривая без 'моста' между ветвями")
 
     # Легенда
-    class_0_patch = plt.Rectangle((0,0), 0, 0, facecolor='lightblue', alpha=0.8,
+    class_0_patch = plt.Rectangle((0, 0), 0, 0, facecolor='lightblue', alpha=0.8,
                                   label='Class 0 (z < 0)')
-    class_1_patch = plt.Rectangle((0,0), 0, 0, facecolor='lightgreen', alpha=0.8,
+    class_1_patch = plt.Rectangle((0, 0), 0, 0, facecolor='lightgreen', alpha=0.8,
                                   label='Class 1 (z > 0)')
     plt.gca().add_patch(class_0_patch)
     plt.gca().add_patch(class_1_patch)
