@@ -33,7 +33,7 @@ def predict(features, weights):
 
 
 # Обучение логистической регрессии с использованием градиентного спуска
-def train_logistic_regression(X, y, epochs=1000, learning_rate=0.01):
+def train_logistic_regression(X, y, epochs, learning_rate):
     n_features = len(X[0])
     weights = [0.0] * (n_features + 1)  # +1 для смещения (bias)
 
@@ -87,7 +87,7 @@ if __name__ == "__main__":
     y_test = [int(row[-1]) for row in test_data]
 
     # Обучить модель
-    weights = train_logistic_regression(X_train, y_train, epochs=1000, learning_rate=0.01)
+    weights = train_logistic_regression(X_train, y_train, 1000, 0.01)
 
     # Оценить модель
     accuracy = compute_accuracy(X_test, y_test, weights)
