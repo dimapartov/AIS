@@ -8,11 +8,6 @@ def sigmoid(x):
         exp_x = math.exp(x)
         return exp_x / (1 + exp_x)
 
-# Предсказание с использованием весов логистической регрессии
-def predict(features, weights):
-    z = weights[0] + sum(w * x for w, x in zip(weights[1:], features))
-    return sigmoid(z)
-
 # Загрузить веса модели из файла
 def load_weights(filepath):
     with open(filepath, 'r') as f:
