@@ -94,7 +94,7 @@ if __name__ == "__main__":
     learning_rate = 0.01
     weights = train_logistic_regression(X_train, y_train, epochs, learning_rate)
     accuracy = compute_accuracy(X_test, y_test, weights)
-    print(f"Точность модели: {accuracy:.2f}")
+    print(f"Точность модели без использования библиотек: {accuracy:.2f}")
 
     # Сохранить веса модели в файл
-    save_weights(weights, "model_weights.txt")
+    save_weights(weights, "model_weights_test.txt")

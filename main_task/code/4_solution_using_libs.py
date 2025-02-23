@@ -41,11 +41,7 @@ def evaluate_model(model, X_test, y_test):
     """Оценить модель и вывести метрики."""
     y_pred = model.predict(X_test)
     accuracy = accuracy_score(y_test, y_pred)
-    print(f'Точность: {accuracy:.2f}')
-    # print('Отчет о классификации:')
-    # print(classification_report(y_test, y_pred))
-    # print('Матрица ошибок:')
-    # print(confusion_matrix(y_test, y_pred))
+    print(f'Точность модели с использованием библиотек: {accuracy:.2f}')
 
 
 def predict_status(model, scaler, input_features, feature_names):
